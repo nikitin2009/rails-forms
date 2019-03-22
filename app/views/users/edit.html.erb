@@ -1,0 +1,21 @@
+<h1>Edit a user</h1>
+<% if flash[:notice] %>
+  <h1> <%= flash[:notice] %> </h1>
+<% end %>
+
+<% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li> <%= message %> </li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for @user do |f|  %>
+  <%= f.label :username, "Username:" %>
+  <%= f.text_field :username %>
+  <%= f.label :email, "Email:" %>
+  <%= f.email_field :email %>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %>
+  <%= f.submit %>
+<% end %>
